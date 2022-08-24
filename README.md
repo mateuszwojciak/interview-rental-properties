@@ -58,7 +58,7 @@ Structure of relational databases (entities and tables) are also generated durin
 
 [{"id":1,"name":"Najemca1"},{"id":2,"name":"Najemca2"},{"id":3,"name":"Najemca3"},{"id":4,"name":"Najemca4"},{"id":5,"name":"Najemca5"},{"id":6,"name":"Najemca6"},{"id":7,"name":"Najemca7"},{"id":8,"name":"Najemca8"}]
 
-### Request GET Tenants with Id
+### Request GET Tenant with Id
 
 `GET /tenant/getTenant`
 
