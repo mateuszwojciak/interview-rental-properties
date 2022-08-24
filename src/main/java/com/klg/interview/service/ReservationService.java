@@ -12,6 +12,7 @@ import com.klg.interview.repository.TenantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,8 +53,16 @@ public class ReservationService {
         reservation.setProperty(property);
 
         List<Reservation> reservedObjectList = reservationRepository.findByPropertyName(property.getName());
+
+        LocalDate startDate = reservation.getRentalPeriodStart();
+        reservation.setRentalPeriodStart(startDate);
+
+        LocalDate endDate = reservation.getRentalPeriodEnd();
+        reservation.setRentalPeriodEnd(endDate);
+
         boolean isAlreadyReserved = reservedObjectList.stream()
-                .anyMatch(reservationCheck -> reservationCheck.getRentalPeriodEnd().isAfter(reservation.getRentalPeriodStart()));
+                .anyMatch(reservationCheck -> reservationCheck.getRentalPeriodEnd().isAfter(reservation.getRentalPeriodStart())
+                && reservationCheck.getRentalPeriodStart().isBefore(reservation.getRentalPeriodEnd()));
         if(isAlreadyReserved)
             throw new InvalidInputException("Nie można zarezerwować tego obiektu, bo obiekt jest w tym czasie wynajmowany");
 

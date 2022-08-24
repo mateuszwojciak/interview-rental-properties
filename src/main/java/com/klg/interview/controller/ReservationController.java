@@ -4,6 +4,7 @@ import com.klg.interview.domain.Reservation;
 import com.klg.interview.exception.NotFoundException;
 import com.klg.interview.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class ReservationController {
         reservationService.saveReservation(reservation);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "updateReservation")
+    @RequestMapping(method = RequestMethod.PUT, value = "updateReservation", consumes = APPLICATION_JSON_VALUE)
     public Reservation updateReservation(@RequestBody Reservation reservation) {
         return reservationService.saveReservation(reservation);
     }

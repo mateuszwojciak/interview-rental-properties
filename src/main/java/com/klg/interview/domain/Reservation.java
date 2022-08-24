@@ -3,7 +3,6 @@ package com.klg.interview.domain;
 import com.sun.istack.NotNull;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -74,11 +73,13 @@ public class Reservation {
         return id_property;
     }
 
+    @NotNull
     @Column(name = "RENTAL_PERIOD_START")
     public LocalDate getRentalPeriodStart() {
         return rentalPeriodStart;
     }
 
+    @NotNull
     @Column(name = "RENTAL_PERIOD_END")
     public LocalDate getRentalPeriodEnd() {
         return rentalPeriodEnd;
